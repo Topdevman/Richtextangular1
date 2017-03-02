@@ -1,0 +1,61 @@
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Rich Text Editor</title>
+
+    <meta name="robots" content="noindex">
+
+    <link rel="stylesheet" href="bower_components/ngWYSIWYG/dist/editor.min.css" />
+
+
+</head>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="demoController" class="container app">
+        <wysiwyg-edit content="your_variable" config="editorConfig"></wysiwyg-edit>
+    </div>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.min.js'></script>
+    <script src="bower_components/ngWYSIWYG/dist/wysiwyg.min.js"></script>
+    <script>
+        angular.module('myApp', ['ngWYSIWYG']).
+        controller('demoController', ['$scope', function($scope) {
+            $scope.your_variable = 'some HTML text here';
+            $scope.api = {
+                scope: $scope,
+                $scope: editorConfig = {
+                    sanitize: false,
+                    toolbar: [{
+                        name: 'basicStyling',
+                        items: ['bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'leftAlign', 'centerAlign', 'rightAlign', 'blockJustify', '-']
+                    }, {
+                        name: 'paragraph',
+                        items: ['orderedList', 'unorderedList', 'outdent', 'indent', '-']
+                    }, {
+                        name: 'doers',
+                        items: ['removeFormatting', 'undo', 'redo', '-']
+                    }, {
+                        name: 'colors',
+                        items: ['fontColor', 'backgroundColor', '-']
+                    }, {
+                        name: 'links',
+                        items: ['image', 'hr', 'symbols', 'link', 'unlink', '-']
+                    }, {
+                        name: 'tools',
+                        items: ['print', '-']
+                    }, {
+                        name: 'styling',
+                        items: ['font', 'size', 'format']
+                    }, ]
+                }
+            };
+        }]);
+    </script>
+
+</body>
+
+</html>
